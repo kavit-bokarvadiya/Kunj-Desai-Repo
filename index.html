@@ -1,784 +1,1035 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kunj Desai - Marriage Biodata</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-color: #4b6cb7;
-            --secondary-color: #182848;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --light-text: #f0f0f0;
-            --bg-color: #f5f7fa;
-            --sidebar-bg: #2c3e50;
-            --card-bg: white;
-            --gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            --header-gradient: linear-gradient(to right, #4b6cb7, #182848);
-        }
+      :root {
+        --primary-color: #4b6cb7;
+        --secondary-color: #182848;
+        --accent-color: #ff6b6b;
+        --text-color: #333;
+        --light-text: #f0f0f0;
+        --bg-color: #f5f7fa;
+        --sidebar-bg: #2c3e50;
+        --card-bg: white;
+        --gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        --header-gradient: linear-gradient(to right, #4b6cb7, #182848);
+      }
 
-        .dark-mode {
-            --primary-color: #6b8ce0;
-            --secondary-color: #1e3261;
-            --text-color: #f0f0f0;
-            --bg-color: #121212;
-            --sidebar-bg: #1a2530;
-            --card-bg: #1e1e1e;
-            --gradient: linear-gradient(135deg, #121212 0%, #2c2c2c 100%);
-            --header-gradient: linear-gradient(to right, #2c3e50, #1a2530);
-        }
+      .dark-mode {
+        --primary-color: #6b8ce0;
+        --secondary-color: #1e3261;
+        --text-color: #f0f0f0;
+        --bg-color: #121212;
+        --sidebar-bg: #1a2530;
+        --card-bg: #1e1e1e;
+        --gradient: linear-gradient(135deg, #121212 0%, #2c2c2c 100%);
+        --header-gradient: linear-gradient(to right, #2c3e50, #1a2530);
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--gradient);
-            color: var(--text-color);
-            line-height: 1.6;
-            display: flex;
-            min-height: 100vh;
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--gradient);
+        color: var(--text-color);
+        line-height: 1.6;
+        display: flex;
+        min-height: 100vh;
+      }
 
-        /* Sidebar Styles */
+      /* Sidebar Styles */
+      .sidebar {
+        width: 300px;
+        background: var(--sidebar-bg);
+        color: var(--light-text);
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 100;
+      }
+
+      .profile-container {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .profile-img-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .profile-img-container::before {
+        content: "";
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        background: linear-gradient(45deg, #ff6b6b, #4b6cb7, #182848);
+        border-radius: 50%;
+        z-index: 1;
+        animation: rotate 3s linear infinite;
+      }
+
+      .profile-img-container::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--sidebar-bg);
+        border-radius: 50%;
+        z-index: 1;
+        top: 0;
+        left: 0;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .name {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .tagline {
+        font-size: 16px;
+        opacity: 0.8;
+      }
+
+      .nav-links {
+        list-style: none;
+        margin-top: 30px;
+      }
+
+      .nav-links li {
+        margin-bottom: 10px;
+      }
+
+      .nav-links a {
+        color: var(--light-text);
+        text-decoration: none;
+        display: block;
+        padding: 12px 15px;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+      }
+
+      .theme-toggle {
+        margin-top: auto;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 5px;
+        padding: 12px 15px;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .theme-toggle i {
+        margin-right: 10px;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex: 1;
+        margin-left: 300px;
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        font-size: 32px;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--primary-color);
+        display: inline-block;
+      }
+
+      /* Home Section */
+      .hero {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .hero p {
+        font-size: 20px;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* About Section */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* Hover effects for info items */
+      .info-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-color);
+      }
+
+      .info-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(75, 108, 183, 0.1) 0%,
+          rgba(24, 40, 72, 0.1) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+      }
+
+      .info-item:hover::before {
+        opacity: 1;
+      }
+
+      .info-item:nth-child(2n):hover {
+        transform: translateY(-8px) rotate(2deg);
+      }
+
+      .info-item:nth-child(3n):hover {
+        transform: translateY(-8px) rotate(-2deg);
+      }
+
+      .info-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #f0f4f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 20px;
+        flex-shrink: 0;
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .info-item:hover .info-icon {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .dark-mode .info-icon {
+        background: #2a2a2a;
+      }
+
+      .info-content {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .info-label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+        transition: color 0.3s ease;
+      }
+
+      .info-item:hover .info-label {
+        color: var(--primary-color);
+      }
+
+      .dark-mode .info-label {
+        color: #ccc;
+      }
+
+      .info-value {
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .info-item:hover .info-value {
+        color: var(--secondary-color);
+      }
+
+      .dark-mode .info-item:hover .info-value {
+        color: var(--light-text);
+      }
+
+      .clickable-name {
+        cursor: pointer;
+        color: var(--primary-color);
+        text-decoration: underline;
+        transition: color 0.3s;
+      }
+
+      .clickable-name:hover {
+        color: var(--accent-color);
+      }
+
+      /* Photo Gallery */
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .photo-item {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .photo-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .photo-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Property Section */
+      .property-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .property-item {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .property-title {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      /* Contact Section */
+      .contact-info {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
+      }
+
+      .contact-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .contact-details {
+        flex: 1;
+      }
+
+      .contact-label {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+
+      .dark-mode .contact-label {
+        color: #ccc;
+      }
+
+      .contact-value {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .contact-value a {
+        color: var(--text-color);
+        text-decoration: none;
+      }
+
+      .contact-value a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+
+      /* Modal for photos */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        overflow: auto;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        display: block;
+        border-radius: 10px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: var(--accent-color);
+      }
+
+      /* Scroll to top button */
+      .scroll-to-top {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .scroll-to-top:hover {
+        background: var(--secondary-color);
+        transform: translateY(-5px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
         .sidebar {
-            width: 300px;
-            background: var(--sidebar-bg);
-            color: var(--light-text);
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
+          width: 250px;
         }
-
-        .profile-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 20px;
-        }
-
-        .name {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .tagline {
-            font-size: 16px;
-            opacity: 0.8;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .nav-links li {
-            margin-bottom: 10px;
-        }
-
-        .nav-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            display: block;
-            padding: 12px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-links i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .theme-toggle {
-            margin-top: auto;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 5px;
-            padding: 12px 15px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .theme-toggle i {
-            margin-right: 10px;
-        }
-
-        /* Main Content Styles */
         .main-content {
-            flex: 1;
-            margin-left: 300px;
-            padding: 40px;
+          margin-left: 250px;
         }
+      }
 
-        .section {
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
         }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .sidebar {
+          position: relative;
+          width: 100%;
+          height: auto;
+          padding: 20px;
         }
-
-        .section-title {
-            font-size: 32px;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-            display: inline-block;
+        .main-content {
+          margin-left: 0;
+          padding: 20px;
         }
-
-        /* Home Section */
-        .hero {
-            text-align: center;
-            padding: 40px 0;
+        .profile-img-container {
+          width: 150px;
+          height: 150px;
         }
-
+        .nav-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        .nav-links li {
+          margin: 5px;
+        }
+        .theme-toggle {
+          margin-top: 20px;
+        }
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
+          font-size: 36px;
         }
-
         .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto;
+          font-size: 18px;
         }
+      }
 
-        /* About Section */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f0f4f8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .dark-mode .info-icon {
-            background: #2a2a2a;
-        }
-
-        .info-content {
-            flex: 1;
-        }
-
-        .info-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .dark-mode .info-label {
-            color: #ccc;
-        }
-
-        .info-value {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Photo Gallery */
-        .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .photo-item {
-            position: relative;
-            text-align: center;
-        }
-
-        .photo-frame {
-            padding: 15px;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .photo-frame:hover {
-            transform: translateY(-5px);
-        }
-
-        .frame1 {
-            border: 10px solid #e4e4e4;
-            box-shadow: 0 0 0 5px #f0f0f0;
-        }
-
-        .dark-mode .frame1 {
-            border: 10px solid #3a3a3a;
-            box-shadow: 0 0 0 5px #2a2a2a;
-        }
-
-        .frame2 {
-            border: 5px solid #d4af37;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            position: relative;
-        }
-
-        .frame2:before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid #d4af37;
-            border-radius: 5px;
-            z-index: -1;
-        }
-
-        .frame3 {
-            border: 2px solid #ddd;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .frame3:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 8px solid rgba(255, 255, 255, 0.5);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .dark-mode .frame3:before {
-            border: 8px solid rgba(0, 0, 0, 0.2);
-        }
-
-        .photo-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Property Section */
+      @media (max-width: 576px) {
+        .info-grid,
         .property-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
-
-        .property-item {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .photos-grid {
+          grid-template-columns: 1fr;
         }
-
-        .property-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 18px;
+        .section-title {
+          font-size: 28px;
         }
-
-        /* Contact Section */
-        .contact-info {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .contact-details {
-            flex: 1;
-        }
-
-        .contact-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .dark-mode .contact-label {
-            color: #ccc;
-        }
-
-        .contact-value {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        .contact-value a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .contact-value a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 250px;
-            }
-            .main-content {
-                margin-left: 250px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                padding: 20px;
-            }
-            .main-content {
-                margin-left: 0;
-                padding: 20px;
-            }
-            .profile-img {
-                width: 150px;
-                height: 150px;
-            }
-            .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 20px;
-            }
-            .nav-links li {
-                margin: 5px;
-            }
-            .theme-toggle {
-                margin-top: 20px;
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
-            .hero p {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .info-grid, .property-grid {
-                grid-template-columns: 1fr;
-            }
-            .photos-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="profile-container">
-            <img src="WhatsApp Image 2025-09-01 at 20.05.28_1f4f0cb6.jpg" alt="Kunj Desai" class="profile-img">
-            <h1 class="name">KUNJ DESAI</h1>
-            <p class="tagline"><a href="https://www.google.com/maps/place/Alembic+Research+Center/@22.3235346,73.1600511,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc8c11853c801:0x9f6b62232c05a098!8m2!3d22.3235297!4d73.1626314!16s%2Fg%2F1tj6s6xz?authuser=0&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" style="color: white; text-decoration: none;">Research Associate at Alembic Pharma Pvt. Ltd.</a></p>
+      <div class="profile-container">
+        <div class="profile-img-container">
+          <img
+            src="WhatsApp Image 2025-09-01 at 20.05.28_1f4f0cb6.jpg"
+            alt="Kunj Desai"
+            class="profile-img"
+          />
         </div>
+        <h1 class="name">KUNJ DESAI</h1>
+        <p class="tagline">
+          <a
+            href="https://www.google.com/maps/place/Alembic+Research+Center/@22.3235346,73.1600511,17z/data=!3m1!4b1!4m6!3m5!1s0x395fc8c11853c801:0x9f6b62232c05a098!8m2!3d22.3235297!4d73.1626314!16s%2Fg%2F1tj6s6xz?authuser=0&entry=ttu&g_ep=EgoyMDI1MDgyNS.0IKXMDSoASAFQAw%3D%3D"
+            style="color: white; text-decoration: underline"
+            >Research Associate at Alembic Pharma Pvt. Ltd.</a
+          >
+        </p>
+      </div>
 
-        <ul class="nav-links">
-            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
-            <li><a href="#photos"><i class="fas fa-camera"></i> Photos</a></li>
-            <li><a href="#property"><i class="fas fa-building"></i> Property</a></li>
-            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-        </ul>
+      <ul class="nav-links">
+        <li>
+          <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="#about"><i class="fas fa-user"></i> About Me</a>
+        </li>
+        <li>
+          <a href="#photos"><i class="fas fa-camera"></i> Photos</a>
+        </li>
+        <li>
+          <a href="#property"><i class="fas fa-building"></i> Property</a>
+        </li>
+        <li>
+          <a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a>
+        </li>
+      </ul>
 
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i> Dark Mode
-        </button>
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Home Section -->
-        <section id="home" class="section visible">
-            <div class="hero">
-                <h1>Marriage Biodata</h1>
-                <p>Welcome to my personal biodata. Here you can find all relevant information about my background, family, and professional life.</p>
+      <!-- Home Section -->
+      <section id="home" class="section visible">
+        <div class="hero">
+          <h1>Marriage Biodata</h1>
+          <p>
+            Welcome to my personal biodata. Here you can find all relevant
+            information about my background, family, and professional life.
+          </p>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-user"></i>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Full Name</div>
-                        <div class="info-value">Kunj Rasikbhai Desai</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-birthday-cake"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Date of Birth</div>
-                        <div class="info-value">25 May 2001</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-ruler-vertical"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Height & Weight</div>
-                        <div class="info-value">5'6" • 55 kg</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Education</div>
-                        <div class="info-value">
-                            M.Sc (Advance Organic Chemistry)<br>Charusat University - Changa
-                            <br>B.Sc (Chemistry)<br>RK University - Rajkot
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Profession</div>
-                        <div class="info-value">
-                            Research Associate<br>Alembic Pharma Pvt. Ltd., Vadodara
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-male"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Father's Name</div>
-                        <div class="info-value">Rasikbhai Keshavbhai Desai</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Father's Occupation</div>
-                        <div class="info-value">Farmer</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-female"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Mother's Name</div>
-                        <div class="info-value">Bhavanaben Rasikbhai Desai</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-house-user"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Mother's Occupation</div>
-                        <div class="info-value">House Wife</div>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="info-content">
-                        <div class="info-label">Sisters</div>
-                        <div class="info-value">
-                            Shriyaben Kishanbhai Godhasara (Married, Rajkot)<br>
-                            Archiben Yashbhai Hirani (Married, Rajkot)
-                        </div>
-                    </div>
-                </div>
+            <div class="info-content">
+              <div class="info-label">Full Name</div>
+              <div class="info-value">
+                <span
+                  class="clickable-name"
+                  data-img="WhatsApp Image 2025-09-01 at 20.05.28_1f4f0cb6.jpg"
+                  >Kunj Rasikbhai Desai</span
+                >
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Photos Section -->
-        <section id="photos" class="section">
-            <h2 class="section-title">Photo Gallery</h2>
-            <div class="photos-grid">
-                <div class="photo-item">
-                    <div class="photo-frame frame1">
-                        <img src="WhatsApp Image 2025-09-01 at 16.21.41_474113fc.jpg" class="photo-img">
-                    </div>
-                </div>
-                
-                <div class="photo-item">
-                    <div class="photo-frame frame2">
-                        <img src="WhatsApp Image 2025-09-02 at 11.37.18_1b41f61a.jpg" class="photo-img">
-                    </div>
-                </div>
-                
-                <div class="photo-item">
-                    <div class="photo-frame frame3">
-                        <img src="WhatsApp Image 2025-09-01 at 22.31.40_fc4a8b32.jpg" class="photo-img">
-                    </div>
-                </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-birthday-cake"></i>
             </div>
-        </section>
-
-        <!-- Property Section -->
-        <section id="property" class="section">
-            <h2 class="section-title">Property Details</h2>
-            <div class="property-grid">
-                <div class="property-item">
-                    <div class="property-title">Residence</div>
-                    <div>1 House at Pajod</div>
-                </div>
-
-                <div class="property-item">
-                    <div class="property-title">Land</div>
-                    <div>15 Vigha Land at Pajod</div>
-                </div>
-
-                <div class="property-item">
-                    <div class="property-title">Property</div>
-                    <div>2BHK Flate at Ghuma, South Bopal - Ahmedabad</div>
-                </div>
+            <div class="info-content">
+              <div class="info-label">Date of Birth</div>
+              <div class="info-value">25 May 2001</div>
             </div>
-        </section>
+          </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Contact Information</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">Address</div>
-                        <div class="contact-value">
-                            <a href="https://www.google.com/maps/place/Pajod+Branch+Post+Office/@21.5485477,70.0602866,17z/data=!3m1!4b1!4m6!3m5!1s0x3957e792a37c7007:0xb177744a53291e2f!8m2!3d21.5485427!4d70.0628669!16s%2Fg%2F11f4_2w71f?authuser=0&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D">Near Ram Mandir, Pajod, Tal - Manavadar, Dis. - Junagadh</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">Father's Contact</div>
-                        <div class="contact-value">
-                            <a href="tel:+919725808712">Rasikbhai: 97258 08712</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">Other Contacts</div>
-                        <div class="contact-value">
-                            <a href="tel:+917874200173">Yashkumar: 78742 00173</a><br>
-                            <a href="tel:+919601543713">Kishankumar: 96015 43713</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">Maternal Contact</div>
-                        <div class="contact-value">
-                            Rohitbhai Shamajibhai Butani: 
-                            <a href="tel:+919998172401">9998172401 (Malia Hatina)</a>
-                        </div>
-                    </div>
-                </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-ruler-vertical"></i>
             </div>
-        </section>
+            <div class="info-content">
+              <div class="info-label">Height & Weight</div>
+              <div class="info-value">5'6" • 55 kg</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Education</div>
+              <div class="info-value">
+                M.Sc (Advance Organic Chemistry)<br />Charusat University -
+                Changa <br />B.Sc (Chemistry)<br />RK University - Rajkot
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Profession</div>
+              <div class="info-value">
+                Research Associate<br />Alembic Pharma Pvt. Ltd., Vadodara
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-male"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Father's Name</div>
+              <div class="info-value">
+                <span class="clickable-name" data-img="pm.jpg"
+                  >Rasikbhai Keshavbhai Desai</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Father's Occupation</div>
+              <div class="info-value">Farmer</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-female"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Mother's Name</div>
+              <div class="info-value">
+                <span class="clickable-name" data-img="pm2.jpg"
+                  >Bhavanaben Rasikbhai Desai</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-house-user"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Mother's Occupation</div>
+              <div class="info-value">House Wife</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="info-content">
+              <div class="info-label">Sisters</div>
+              <div class="info-value">
+                <span class="clickable-name" data-img="m.jpg"
+                  >Shriyaben Kishanbhai Godhasara</span
+                >
+                (Married, Rajkot)<br />
+                <span class="clickable-name" data-img="n.jpg"
+                  >Archiben Yashbhai Hirani</span
+                >
+                (Married, Rajkot)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Photos Section -->
+      <section id="photos" class="section">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="photos-grid">
+          <div class="photo-item">
+            <img
+              src="WhatsApp Image 2025-09-01 at 16.21.41_474113fc.jpg"
+              class="photo-img"
+            />
+          </div>
+
+          <div class="photo-item">
+            <img
+              src="WhatsApp Image 2025-09-02 at 11.37.18_1b41f61a.jpg"
+              class="photo-img"
+            />
+          </div>
+
+          <div class="photo-item">
+            <img
+              src="WhatsApp Image 2025-09-01 at 22.31.40_fc4a8b32.jpg"
+              class="photo-img"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Property Section -->
+      <section id="property" class="section">
+        <h2 class="section-title">Property Details</h2>
+        <div class="property-grid">
+          <div class="property-item">
+            <div class="property-title">Residence</div>
+            <div>1 House at Pajod</div>
+          </div>
+
+          <div class="property-item">
+            <div class="property-title">Land</div>
+            <div>15 Vigha Land at Pajod</div>
+          </div>
+
+          <div class="property-item">
+            <div class="property-title">Property</div>
+            <div>2BHK Flate at Ghuma, South Bopal - Ahmedabad</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Address</div>
+              <div class="contact-value">
+                <a
+                  href="https://www.google.com/maps/place/Pajod+Branch+Post+Office/@21.5485477,70.0602866,17z/data=!3m1!4b1!4m6!3m5!1s0x3957e792a37c7007:0xb177744a53291e2f!8m2!3d21.5485427!4d70.0628669!16s%2Fg%2F11f4_2w71f?authuser=0&entry=ttu&g_ep=EgoyMDI1MDgyNS.0IKXMDSoASAFQAw%3D%3D"
+                  >Near Ram Mandir, Pajod, Tal - Manavadar, Dis. - Junagadh</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Father's Contact</div>
+              <div class="contact-value">
+                <a href="tel:+919725808712" style="text-decoration: underline"
+                  ><span>Rasikbhai</span>: 97258 08712</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Other Contacts</div>
+              <div class="contact-value">
+                <a href="tel:+917874200173" style="text-decoration: underline"
+                  ><span>Yashkumar</span>: 78742 00173</a
+                ><br />
+                <a href="tel:+919601543713" style="text-decoration: underline"
+                  ><span>Kishankumar</span>: 96015 43713</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Maternal Contact</div>
+              <div class="contact-value">
+                <span>Rohitbhai Shamajibhai Butani</span>:
+                <a href="tel:+919998172401" style="text-decoration: underline"
+                  >9998172401 (Malia Hatina)</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg" />
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById("themeToggle");
-        const body = document.body;
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
 
-        themeToggle.addEventListener("click", () => {
-            body.classList.toggle("dark-mode");
-            if (body.classList.contains("dark-mode")) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-            }
-        });
-
-        // Navigation functionality
-        const sections = document.querySelectorAll(".section");
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        // Set active nav link
-        function setActiveNavLink() {
-            let currentSection = "";
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 200) {
-                    currentSection = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove("active");
-                if (link.getAttribute("href").substring(1) === currentSection) {
-                    link.classList.add("active");
-                }
-            });
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        if (body.classList.contains("dark-mode")) {
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
         }
+      });
 
-        // Scroll to section when clicking nav links
-        navLinks.forEach(link => {
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute("href").substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                window.scrollTo({
-                    top: targetSection.offsetTop - 20,
-                    behavior: "smooth"
-                });
-                
-                // Update active link
-                navLinks.forEach(navLink => navLink.classList.remove("active"));
-                link.classList.add("active");
-            });
+      // Navigation functionality
+      const sections = document.querySelectorAll(".section");
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      // Set active nav link
+      function setActiveNavLink() {
+        let currentSection = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (scrollY >= sectionTop - 200) {
+            currentSection = section.getAttribute("id");
+          }
         });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px",
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").substring(1) === currentSection) {
+            link.classList.add("active");
+          }
         });
+      }
 
-        // Update active nav link on scroll
-        window.addEventListener("scroll", setActiveNavLink);
+      // Scroll to section when clicking nav links
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          window.scrollTo({
+            top: targetSection.offsetTop - 20,
+            behavior: "smooth",
+          });
+
+          // Update active link
+          navLinks.forEach((navLink) => navLink.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Update active nav link on scroll
+      window.addEventListener("scroll", setActiveNavLink);
+
+      // Scroll to top button functionality
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.style.display = "block";
+        } else {
+          scrollToTopBtn.style.display = "none";
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Modal functionality for clickable names
+      const modal = document.getElementById("photoModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeModal = document.querySelector(".close");
+      const clickableNames = document.querySelectorAll(".clickable-name");
+
+      document.querySelectorAll(".clickable-name").forEach((item) => {
+        item.addEventListener("click", function () {
+          let imgPath = this.getAttribute("data-img");
+          window.open(imgPath, "_blank"); // naye tab me image khol dega
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+
+      
     </script>
-</body>
+  </body>
 </html>
